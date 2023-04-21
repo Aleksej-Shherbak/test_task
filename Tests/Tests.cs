@@ -62,4 +62,17 @@ public class Tests
         // assert
        Assert.True(Math.Abs(expectedArea - result) <= double.Epsilon);
     }
+    
+    [Fact]
+    public void TriangleConstructor_ThrowsArgumentException_When_InadequateSideValuesGiven()
+    {
+        // arrange, act, assert
+        Assert.Throws<ArgumentException>(() => new Triangle(-1, 2, 3));
+        Assert.Throws<ArgumentException>(() => new Triangle(1, -2, 3));
+        Assert.Throws<ArgumentException>(() => new Triangle(1, 2, -3));
+        Assert.Throws<ArgumentException>(() => new Triangle(0, 2, 3));
+        Assert.Throws<ArgumentException>(() => new Triangle(1, 0, 3));
+        Assert.Throws<ArgumentException>(() => new Triangle(1, 2, 0));
+        Assert.Throws<ArgumentException>(() => new Triangle(5, 5, 666));
+    }
 }

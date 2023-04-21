@@ -10,6 +10,16 @@ public class Triangle : IShape
 
     public Triangle(double side1, double side2, double side3)
     {
+        if (side1 <= 0 || side2 <= 0 || side3 <= 0)
+        {
+            throw new ArgumentException("All sides should be positive numbers.");
+        }
+
+        if (side1 + side2 <= side3 || side1 + side3 <= side2 || side2 + side3 <= side1)
+        {
+            throw new ArgumentException("The given sides cannot form a triangle.");
+        }
+   
         Side1 = side1;
         Side2 = side2;
         Side3 = side3;
